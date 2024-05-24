@@ -28,7 +28,7 @@ df.head()
 loader = DataFrameLoader(df, page_content_column='recipe_name')
 documents = loader.load()
 
-embeddings = OpenAIEmbeddings(openai_api_key="ваш OPENAI-ключ")
+embeddings = OpenAIEmbeddings(openai_api_key)
 
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
 texts = text_splitter.split_documents(documents)
@@ -48,7 +48,7 @@ prompt = PromptTemplate(
 max_tokens = 1500
 
 # Инициализация модели OpenAI
-llm = OpenAI(temperature=0, max_tokens=max_tokens, openai_api_key="ваш OPENAI-ключ")
+llm = OpenAI(temperature=0, max_tokens=max_tokens, openai_api_key)
 
 # Создание LLMChain с prompt и llm
 chain = LLMChain(prompt=prompt, llm=llm)
